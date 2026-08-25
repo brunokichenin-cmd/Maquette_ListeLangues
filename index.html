@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Maquette - Informations Projet</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cadreTest">
+<table class="tabInfosProjet">
+    <tbody>
+        <tr>
+            <td colspan="4" class="titreInfosProjet">
+                <h3>Informations Projet</h3>
+            </td>
+        </tr>
+        <tr class="ligneBackgroundWhite">
+            <td rowspan="4" class="imgTypeIntervenant">
+                <img src="https://placehold.co/50x50/E9A240/000?text=I" style="height: 50px;border-radius: 5px 5px 0 5px;background-color: var(--dore);width: 50px;border: 2px solid black;position: relative;left: -5px;top: -5px;z-index: 1" alt="">
+            </td>
+            <td class="labelInfosProjet">Client</td>
+            <td class="tdBlancTransparent">
+                <input type="text" class="inputInfosProjet" name="LIBELLE_INTERVENANT" id="LIBELLE_INTERVENANT" value="BONDUELLE" disabled>
+            </td>
+            <td class="lastBlancTransparent"></td>
+        </tr>
+
+        <tr class="ligneBackgroundWhite">
+            <td class="labelInfosProjet">Marque *</td>
+            <td class="tdBlancTransparent">
+                <select name="id_marque" id="id_marque" onchange="modifGamme(this.value);majFlagModification()" class="inputInfosProjet">
+                    <option value="" disabled>Aucune</option>
+                    <option value="8">INCONNU</option>
+                    <option value="34" selected>BONDUELLE FOOD SERVICE</option>
+                </select>
+            </td>
+            <td class="lastBlancTransparent">
+                <img src="https://placehold.co/20x20/E9A240/000?text=%2B" alt="" style="height: 20px;cursor:pointer" onclick="ajoutMarque()">
+            </td>
+        </tr>
+
+        <tr class="ligneBackgroundWhite">
+            <td class="labelInfosProjet">Gamme *</td>
+            <td class="tdBlancTransparent">
+                <select name="ID_GAMME" id="ID_GAMME" class="inputInfosProjet" onchange="majFlagModification()">
+                    <option value="" disabled selected>Aucune</option>
+                    <option value="64">TO COOK</option>
+                    <option value="65" selected>STEAM COOKED</option>
+                    <option value="68">GRATINS</option>
+                    <option value="69">STIR FRY</option>
+                </select>
+            </td>
+            <td class="lastBlancTransparent">
+                <img src="https://placehold.co/20x20/E9A240/000?text=%2B" id="imgAjoutGamme" alt="" style="height: 20px;cursor:pointer;" onclick="ajoutGamme()">
+            </td>
+        </tr>
+
+        <tr class="ligneBackgroundWhite">
+            <td class="labelInfosProjet">N° de commande</td>
+            <td class="tdBlancTransparent">
+                <input type="text" class="inputInfosProjet" name="NUMERO_COMMANDE" id="NUMERO_COMMANDE" value="" disabled>
+            </td>
+            <td class="lastBlancTransparent"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="labelInfosProjet">Imprimeur</td>
+            <td>
+                <input type="text" class="inputInfosProjetSansBackground" name="LIBELLE_INTERVENANT_IMPRIMEUR" id="LIBELLE_INTERVENANT_IMPRIMEUR" value="AGIS SAS" disabled>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="labelInfosProjet">Type d'impression</td>
+            <td colspan="2">
+                <table class="tableInterieur">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" class="inputInfosProjetSansBackground" name="LIBELLE_TYPE_IMPRESSION" id="LIBELLE_TYPE_IMPRESSION" value="Offset" disabled>
+                        </td>
+                        <td class="labelInfosProjet">Support</td>
+                        <td>
+                            <input type="text" class="inputInfosProjetSansBackground" name="LIBELLE_TYPE_SUPPORT" id="LIBELLE_TYPE_SUPPORT" value="" disabled>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="labelInfosProjet">Finition</td>
+            <td colspan="2">
+                <table class="tableInterieur">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" class="inputInfosProjetSansBackground" onchange="majFlagModification()" name="finition_exe" id="finition_exe" value=" ">
+                        </td>
+                        <td class="labelInfosProjet">Format *</td>
+                        <td>
+                            <input type="text" class="inputInfosProjetSansBackground" onchange="majFlagModification()" name="format_exe" id="format_exe" value="425 x 260 mm">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="labelInfosProjet">Désignation *</td>
+            <td>
+                <input type="text" class="inputDesignation" onchange="majFlagModification()" name="designation_exe" id="designation_exe" value="Bond_Snijboontjes_400g">
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="labelInfosProjet">Langues</td>
+            <td>
+                <div class="divAjoutInformationsLangues" id="ajoutLangues" style="display: none;">
+                    <div class="langues-header">Liste des Langues :</div>
+                    <div id="listeLanguesAjout">
+                        <div class="listeLanguesAjout">
+            <div class="lang-item">
+                <label for="1_langue">Français</label>
+                <label class="switch">
+                    <input type="checkbox" id="1_langue" name="ajout_langue" value="FR" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="2_langue">Anglais</label>
+                <label class="switch">
+                    <input type="checkbox" id="2_langue" name="ajout_langue" value="GB" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="7_langue">Allemand</label>
+                <label class="switch">
+                    <input type="checkbox" id="7_langue" name="ajout_langue" value="DE" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="26_langue">Arabe</label>
+                <label class="switch">
+                    <input type="checkbox" id="26_langue" name="ajout_langue" value="AB" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="19_langue">Bulgare</label>
+                <label class="switch">
+                    <input type="checkbox" id="19_langue" name="ajout_langue" value="BG" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="23_langue">Croate</label>
+                <label class="switch">
+                    <input type="checkbox" id="23_langue" name="ajout_langue" value="HR" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="9_langue">Danois</label>
+                <label class="switch">
+                    <input type="checkbox" id="9_langue" name="ajout_langue" value="DK" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="14_langue">Espagnol</label>
+                <label class="switch">
+                    <input type="checkbox" id="14_langue" name="ajout_langue" value="ES" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="20_langue">Estonien</label>
+                <label class="switch">
+                    <input type="checkbox" id="20_langue" name="ajout_langue" value="EE" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="10_langue">Finnois</label>
+                <label class="switch">
+                    <input type="checkbox" id="10_langue" name="ajout_langue" value="FI" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="27_langue">Grec</label>
+                <label class="switch">
+                    <input type="checkbox" id="27_langue" name="ajout_langue" value="GR" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="4_langue">Hongrois</label>
+                <label class="switch">
+                    <input type="checkbox" id="4_langue" name="ajout_langue" value="HU" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="3_langue">Italien</label>
+                <label class="switch">
+                    <input type="checkbox" id="3_langue" name="ajout_langue" value="IT" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="25_langue">Kazakh</label>
+                <label class="switch">
+                    <input type="checkbox" id="25_langue" name="ajout_langue" value="KZ" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="21_langue">Letton</label>
+                <label class="switch">
+                    <input type="checkbox" id="21_langue" name="ajout_langue" value="LT" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="22_langue">Lituanien</label>
+                <label class="switch">
+                    <input type="checkbox" id="22_langue" name="ajout_langue" value="LV" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="13_langue">Néerlandais</label>
+                <label class="switch">
+                    <input type="checkbox" id="13_langue" name="ajout_langue" value="NL" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="18_langue">Norvégien</label>
+                <label class="switch">
+                    <input type="checkbox" id="18_langue" name="ajout_langue" value="NO" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="5_langue">Polonais</label>
+                <label class="switch">
+                    <input type="checkbox" id="5_langue" name="ajout_langue" value="PL" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="6_langue">Portugais</label>
+                <label class="switch">
+                    <input type="checkbox" id="6_langue" name="ajout_langue" value="PT" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="17_langue">Roumain</label>
+                <label class="switch">
+                    <input type="checkbox" id="17_langue" name="ajout_langue" value="RO" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="12_langue">Russe</label>
+                <label class="switch">
+                    <input type="checkbox" id="12_langue" name="ajout_langue" value="RU" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="16_langue">Slovaque</label>
+                <label class="switch">
+                    <input type="checkbox" id="16_langue" name="ajout_langue" value="SK" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="8_langue">Suédois</label>
+                <label class="switch">
+                    <input type="checkbox" id="8_langue" name="ajout_langue" value="SE" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="15_langue">Tchèque</label>
+                <label class="switch">
+                    <input type="checkbox" id="15_langue" name="ajout_langue" value="CZ" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+            <div class="lang-item">
+                <label for="24_langue">Ukrainien</label>
+                <label class="switch">
+                    <input type="checkbox" id="24_langue" name="ajout_langue" value="UA" onchange="modifListeLangues(this.id)">
+                    <span></span>
+                </label>
+            </div>
+                        </div>
+                    </div>
+                    <div class="langues-actions">
+                        <img src="https://placehold.co/16x16/E9A240/000?text=%E2%9C%93" alt="Valider" onclick="hideLangues()" style="cursor:pointer">
+                    </div>
+                </div>
+                <div class="listesLangues langues-open" id="ouvrirListeLangues" onclick="listeLangues()" title="Modifier les langues">
+                    <input type="hidden" name="langues_exe" id="langues_exe" value="GB / FR / ES / HU">
+                    <div id="listeLangues">
+                        <span class="lang-block" draggable="true" data-code="GB">GB</span><span class="lang-block" draggable="true" data-code="FR">FR</span><span class="lang-block" draggable="true" data-code="ES">ES</span><span class="lang-block" draggable="true" data-code="HU">HU</span>
+                    </div>
+                </div>
+                <span class="btn" onclick="copyLanguesExe()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" style="height: 17.5px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path>
+                    </svg>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
