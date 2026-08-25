@@ -2544,18 +2544,33 @@ input[type=text]{
 }
 
 .listesLangues{
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	color: var(--gris)!important;
-	background-color: var(--blanctransparentinput);
-	border-radius: 25px;
-	padding: 4px 4px;
-	width: 70%;
-	height: auto;
-	min-height: 8px;
-	max-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--gris)!important;
+    background-color: var(--blanctransparentinput);
+    border-radius: 25px;
+    padding: 4px 4px;
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    height: auto;
+    min-height: 8px;
+    max-width: none;
 }
+
+.langues-row{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.btn-langues-copy{
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
 .modifDiv{
 	position: absolute;
 	right: 0;
@@ -2564,7 +2579,7 @@ input[type=text]{
 }
 #listeLangues{
 	display: grid;
-	grid-template-columns: repeat(8, minmax(0, 1fr));
+	grid-template-columns: repeat(10, minmax(0, 1fr));
 	align-items: center;
 	gap: 6px;
 	width: 100%;
